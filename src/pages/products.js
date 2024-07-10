@@ -10,8 +10,6 @@ export default function Product(Props) {
         .then(response => response.json())
         .then(json => console.log(json))
     },[name])
-
-
     function doSomething(){
         setName('Farhan')
         console.log('I am doing ' + name)
