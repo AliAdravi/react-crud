@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 export default function Register(){
 
@@ -11,17 +12,17 @@ export default function Register(){
         confirmPassword: ''
     });
 
-    useEffect(()=> inputRef.current.focus())
+    useEffect(()=> {
+        inputRef.current.focus()
+    }, [])
     
-    const handleChange = async (e) => {
+    const handleChange = (e) => {
         const {name, value} = e.target;
-        console.log('read:', value);
-        await setFormData({ ...formData, [name]: value });
+        setFormData({ ...formData, [name]: value });
     }
    
     const callValidation = (e) => {
         var validationErrors = {}
-        console.log('value:',formData.username.trim());
         if(formData.username.trim() === '')
             validationErrors.username = 'User name is required';
 
@@ -104,6 +105,9 @@ export default function Register(){
 
                     <button type="submit" 
                         className="btn btn-primary">Register</button>
+                    <div className="mt-2">
+                        Login if already have an account with us!
+                    </div>
                 </form>
             </div>
             <div>
