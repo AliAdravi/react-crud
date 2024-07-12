@@ -1,25 +1,35 @@
 import logo from './logo.svg';
 import './App.css';
-import About from './pages/about'
-import Product from './pages/products'
+import LeftNav from './pages/shared/LeftNav';
+import Register from './pages/Register';
 import { useState } from 'react';
+import { Outlet, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import AuthorList from './pages/authors/AuthorList'
+import Error from './pages/shared/Error';
 function App() {
-
-  let [isVisible, setIsVisible] = useState(false)
   
   return (
     <div className="App">
-      <header className="App-header">
-        <About />
-        {/* {
-           isVisible === true? <Product /> : null
-        } */}
-        <Product />
-        
-        <button onClick={() => setIsVisible(!isVisible)}>Toggle</button>
+      
        
-
-      </header>
+          <div className='leftMenu'>
+            <LeftNav />
+          </div>
+          <div className='content'>
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/authors' element={<AuthorList  />}>
+                  <Route path='add' element={<AuthorList  />} />
+                  <Route path='edit' element={<AuthorList  />} />
+                  <Route path='detail/:id' element={<AuthorList  />} />
+              </Route>
+              <Route path='/register' element={<Register />} />
+              <Route path='*' element={<Error />} />
+            </Routes>
+          </div>
+        
+        
     </div>
   );
 }

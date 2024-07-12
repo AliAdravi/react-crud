@@ -1,11 +1,14 @@
-.prod-list{
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  font-size: 21px;
-}
-.prod-list > li {
-  border-bottom: 1px solid #bbb;
-  padding: 10px 20px;
 
+.App 
+{
+  display: flex;
+  align-items: stretch;
+}
+.App > .leftMenu {
+  
+  flex: 200px 0 0;
+}
+.App > .content {
+  flex: 200px 1;
+  margin: 20px 30px;
 }
